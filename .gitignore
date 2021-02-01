@@ -1,0 +1,7 @@
+/ckpt
+/.ipynb_checkpoints
+/__pycache__
+/chkpt
+/dataset
+/results
+*.ipynb
