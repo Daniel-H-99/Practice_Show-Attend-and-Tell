@@ -7,7 +7,7 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 import torch.nn.functional as F
 import torchvision
-import torchvision.datasets
+import torchvision.datasetsp
 import torchvision.transforms as transforms
 import numpy as np
 from torch.utils.data import TensorDataset, DataLoader 
@@ -151,12 +151,10 @@ def main(args):
                             answers = [seq2tok(answer, vocab) for answer in answers]
                             preds, attns = model.infer(images.to(args.device))
                             preds = seq2tok(preds.cpu().numpy().tolist(), vocab)
-                    print(pred_list)
-                    print(answer_list)  
-                    print('BLEU-1: %f' % corpus_bleu(answers, preds, weights=(1.0, 0, 0, 0)))
-                    print('BLEU-2: %f' % corpus_bleu(answers, preds, weights=(0.5 , 0.5, 0, 0)))
-                    print('BLEU-3: %f' % corpus_bleu(answers, preds, weights=(0.3 , 0.3, 0.3, 0)))
-                    print('BLEU-4: %f' % corpus_bleu(answers, preds, weights=(0.25, 0.25, 0.25, 0.25)))                
+                    args.logger.info('BLEU-1: %f' % corpus_bleu(answers, preds, weights=(1.0, 0, 0, 0)))
+                    args.logger.info('BLEU-2: %f' % corpus_bleu(answers, preds, weights=(0.5 , 0.5, 0, 0)))
+                    args.logger.info('BLEU-3: %f' % corpus_bleu(answers, preds, weights=(0.3 , 0.3, 0.3, 0)))
+                    args.logger.info('BLEU-4: %f' % corpus_bleu(answers, preds, weights=(0.25, 0.25, 0.25, 0.25)))                
                 steps += 1 
     else:
         pass
