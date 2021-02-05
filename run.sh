@@ -1,6 +1,16 @@
-python main.py \
-    --name "pretest" \
+python /content/drive/MyDrive/SAT/main.py \
+    --name "no sharpening reduced dim" \
+    --path "/content/drive/MyDrive/SAT" \
+    --temperature 1 \
     --save_period 1 \
-    --num_workers 0 \
-    
-    
+    --num_workers 4 \
+    --batch_size 32 \
+    --word_dim 256 \
+    --embedding_dim 512 \
+    --hidden_dim 256 \
+    --attn_dim 256	\
+    --temperature 1 \
+    --learning_rate 1e-4 \
+    --test_data_portion 0 \
+    --penalty 0.1 \
+    --k 5

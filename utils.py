@@ -70,6 +70,16 @@ def seq2sen(batch, vocab):
 
     return sen_list
 
+def seq2tok(batch, vocab):
+    sen_list = []
+
+    for seq in batch:
+        seq_strip = seq[:seq.index(1)+1]
+        sen = [vocab.itow(token) for token in seq_strip[1:-1]]
+        sen_list.append(sen)
+
+    return sen_list 
+
 # shuffle source and target lists in paired manner
 def shuffle_list(src, tgt):
     index = list(range(len(src)))
